@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { fetchCompanyData, CompanyDataType } from '../api/companyApi';
 import CompanyForm from './CompanyForm';
 import CompanyData from './CompanyData';
-import { Button } from './ui/button';
 
 const CompanyFetcher: React.FC = () => {
   const [companyData, setCompanyData] = useState<CompanyDataType | null>(null);
