@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: '/',  // Set this to the name of your GitHub repository
+  base: '/statexpress_frontend/',  // Set this to the name of your GitHub repository
   plugins: [react()],
   resolve: {
     alias: {
