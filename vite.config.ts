@@ -16,6 +16,7 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:3000/',  // Your backend server running on port 3001
         changeOrigin: true,
+        base: '/statexpress_frontend/',
       },
     },
   },
