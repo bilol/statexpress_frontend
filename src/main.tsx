@@ -1,7 +1,7 @@
 // src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './statexpress_frontend/App';
 import './statexpress_frontend/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
