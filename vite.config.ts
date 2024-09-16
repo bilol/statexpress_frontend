@@ -19,7 +19,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:3000/',  // Backend server for local development
+        target: 'http://stat-express-backend.vercel.app',  // Backend server for local development
         changeOrigin: true,
       },
     },
