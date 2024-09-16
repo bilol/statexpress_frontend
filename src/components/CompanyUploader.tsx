@@ -69,7 +69,7 @@ const CompanyUploader: React.FC = () => {
     <div className="p-5 m-5 shadow-lg rounded-lg max-w-xxl mx-auto bg-white">
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <label htmlFor="file" className="font-medium">
-          Upload Excel File
+          Please Upload Excel File
         </label>
         <Input
           type="file"
