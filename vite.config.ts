@@ -15,14 +15,5 @@ export default defineConfig({
       input: path.resolve(__dirname, 'index.html'),
     },
   },
-
-  server: {
-    proxy: {
-      '/': {
-        target: 'https://stat-express-backend.vercel.app',  // Backend server for local development
-        changeOrigin: true,
-      },
-    },
-  },
   
 });
