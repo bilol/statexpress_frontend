@@ -22,6 +22,15 @@ export interface CompanyDataType {
 
 // Fetch company data from the backend API
 export const fetchCompanyData = async (okpo: string): Promise<CompanyDataType> => {
-  const response = await axios.post('/company', { okpo });
-  return response.data.data;
+  try {
+    const response = await axios.post('/api/company', { okpo });  // Updated to use /api/company route
+    return response.data.data;
+  } catch (error: any) {
+    // Provide more context if an error occurs
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message); // Error from backend
+    } else {
+      throw new Error('An error occurred while fetching company data. Please try again.');
+    }
+  }
 };
