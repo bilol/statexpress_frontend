@@ -20,8 +20,19 @@ export interface CompanyDataType {
   Founders: string;
 }
 
-// Fetch company data from the backend API
+// Fetch company data from the backend API with User-Agent
 export const fetchCompanyData = async (okpo: string): Promise<CompanyDataType> => {
-  const response = await axios.post('http://stat-express-backend.vercel.app/api/company', { okpo });
+  const userAgent = navigator.userAgent;  // Get the User-Agent from the browser
+
+  const response = await axios.post(
+    'http://stat-express-backend.vercel.app/api/company',
+    { okpo },
+    {
+      headers: {
+        'User-Agent': userAgent,  // Pass the User-Agent in the headers
+      },
+    }
+  );
+
   return response.data.data;
 };
