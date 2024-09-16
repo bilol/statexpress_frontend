@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';  // Import axios for API requests
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -32,7 +33,7 @@ const CompanyUploader: React.FC = () => {
     }
   };
 
-  // Handle form submission and file upload
+  // Handle form submission and file upload using axios
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!file) {
@@ -47,12 +48,14 @@ const CompanyUploader: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('https://stat-express-backend.vercel.app/api/excel/upload', {
-        method: 'POST',
-        body: formData,
+      // Use axios for the file upload
+      const response = await axios.post('https://stat-express-backend.vercel.app/api/excel/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
 
-      const result = await response.json();
+      const result = response.data;
       if (result.success) {
         setCompanyData(result.data);
       } else {
