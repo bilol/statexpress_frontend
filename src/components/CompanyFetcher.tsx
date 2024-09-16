@@ -18,24 +18,31 @@ const CompanyFetcher: React.FC = () => {
       const data = await fetchCompanyData(okpo);
       setCompanyData(data);
     } catch (err: any) {
-      // Set the error message based on the error response
-      const message =
-        err.response && err.response.data && err.response.data.message
-          ? err.response.data.message
-          : 'Failed to fetch company data. Please try again.';
-      setError(message);
+      // Check if the error has a response object (axios errors)
+      if (err.response && err.response.data && err.response.data.message) {
+        setError(err.response.data.message);
+      } else if (err.message) {
+        // Generic error message if there's no response
+        setError(err.message);
+      } else {
+        // Fallback error message
+        setError('Failed to fetch company data. Please try again.');
+      }
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
+    <div className="company-fetcher">
       <CompanyForm onSubmit={handleFetchCompanyData} />
+      
       {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {!loading && !error && companyData && <CompanyData data={companyData} />}
+      {error && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
+      
+      {!loading && !error && companyData && (
+        <CompanyData data={companyData} />
+      )}
     </div>
   );
 };
