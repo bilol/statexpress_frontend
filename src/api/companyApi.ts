@@ -23,7 +23,7 @@ export interface CompanyDataType {
 // Fetch company data from the backend API
 export const fetchCompanyData = async (okpo: string): Promise<CompanyDataType> => {
   try {
-    const response = await axios.post('https://stat-express-backend.vercel.app/api/company/api/company', { okpo });  // Updated to use /api/company route
+    const response = await axios.post('https://stat-express-backend.vercel.app/api/company', { okpo });  // Updated to use /api/company route
     return response.data.data;
   } catch (error: any) {
     // Provide more context if an error occurs
