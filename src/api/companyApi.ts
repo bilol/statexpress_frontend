@@ -23,16 +23,22 @@ export interface CompanyDataType {
 // Fetch company data from the backend API
 export const fetchCompanyData = async (okpo: string): Promise<CompanyDataType> => {
   try {
-    const response = await axios.post('https://stat-express-backend.vercel.app/api/company', 
-      { okpo },
-      { withCredentials: true }  // Allow cookies if necessary
-    );  
+    const response = await axios.post('https://stat-express-backend.vercel.app/api/company', { okpo });
     return response.data.data;
   } catch (error: any) {
-    if (error.response && error.response.data && error.response.data.message) {
-      throw new Error(error.response.data.message);
+    console.error('Error fetching company data:', error);  // Log full error
+    if (error.response) {
+      // The request was made, and the server responded with a status code outside the 2xx range
+      console.error('Response data:', error.response.data);
+      console.error('Response status:', error.response.status);
+      console.error('Response headers:', error.response.headers);
+    } else if (error.request) {
+      // The request was made, but no response was received
+      console.error('Request data:', error.request);
     } else {
-      throw new Error('An error occurred while fetching company data. Please try again.');
+      // Something happened in setting up the request that triggered an Error
+      console.error('Error message:', error.message);
     }
+    throw new Error('An error occurred while fetching company data.');
   }
 };
