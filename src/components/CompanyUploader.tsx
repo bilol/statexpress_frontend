@@ -47,7 +47,7 @@ const CompanyUploader: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('/api/excel/upload', {
+      const response = await fetch('https://stat-express-backend.vercel.app/api/excel/upload', {
         method: 'POST',
         body: formData,
       });
