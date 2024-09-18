@@ -18,47 +18,47 @@ const CompanyData: React.FC<CompanyDataProps> = ({ data }) => {
         <TableBody>
           <TableRow>
             <TableCell className="font-medium">INN</TableCell>
-            <TableCell>{data.INN}</TableCell>
+            <TableCell>{data.INN || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Registering Authority</TableCell>
-            <TableCell>{data['Registering Authority']}</TableCell>
+            <TableCell>{data['Registering Authority'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Registration Date</TableCell>
-            <TableCell>{data['Registration Date']}</TableCell>
+            <TableCell>{data['Registration Date'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Registration Number</TableCell>
-            <TableCell>{data['Registration Number']}</TableCell>
+            <TableCell>{data['Registration Number'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Company Name</TableCell>
-            <TableCell>{data['Company Name']}</TableCell>
+            <TableCell>{data['Company Name'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Legal Form Code</TableCell>
-            <TableCell>{data['Legal Form Code']}</TableCell>
+            <TableCell>{data['Legal Form Code'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Activity Code</TableCell>
-            <TableCell>{data['Activity Code']}</TableCell>
+            <TableCell>{data['Activity Code'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">DBIBT Code</TableCell>
-            <TableCell>{data['DBIBT Code']}</TableCell>
+            <TableCell>{data['DBIBT Code'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Small Business Status</TableCell>
-            <TableCell>{data['Small Business Status']}</TableCell>
+            <TableCell>{data['Small Business Status'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Active Status</TableCell>
-            <TableCell>{data['Active Status']}</TableCell>
+            <TableCell>{data['Active Status'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Charter Fund</TableCell>
-            <TableCell>{data['Charter Fund']}</TableCell>
+            <TableCell>{data['Charter Fund'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Email</TableCell>
@@ -66,23 +66,23 @@ const CompanyData: React.FC<CompanyDataProps> = ({ data }) => {
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Phone Numbers</TableCell>
-            <TableCell>{data['Phone Numbers']}</TableCell>
+            <TableCell>{data['Phone Numbers'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">SOATO Code</TableCell>
-            <TableCell>{data['SOATO Code']}</TableCell>
+            <TableCell>{data['SOATO Code'] || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Address</TableCell>
-            <TableCell>{data.Address}</TableCell>
+            <TableCell>{data.Address || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-medium">Leader</TableCell>
-            <TableCell>{data.Leader}</TableCell>
+            <TableCell>{data.Leader || 'Not available'}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-medium">Founders</TableCell>
-            <TableCell>{data.Founders}</TableCell>
+            <TableCell className="font-medium">Shareholders</TableCell>
+            <TableCell>{data.Shareholders || 'Not available'}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

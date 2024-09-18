@@ -15,7 +15,24 @@ import {
 // Define the structure of the company data
 interface CompanyDataType {
   okpo: string;
-  companyData?: any;
+  companyData?: {
+    generalInfo?: {
+      'Company Name'?: string;
+      'INN'?: string;
+      'Registration Date'?: string;
+      'Active Status'?: string;
+      'Charter Fund'?: string;
+    };
+    contactInfo?: {
+      'Phone Numbers'?: string;
+      'SOATO Code'?: string;
+      'Address'?: string;
+    };
+    managementInfo?: {
+      'Leader'?: string;
+    };
+    shareholders?: string[]; // Array of shareholder info in the form "Name (Percentage)"
+  };
   error?: string;
 }
 
@@ -103,21 +120,25 @@ const CompanyUploader: React.FC = () => {
               <TableHead>SOATO Code</TableHead>
               <TableHead>Address</TableHead>
               <TableHead>Leader</TableHead>
+              <TableHead>Shareholders</TableHead> {/* Added Shareholders column */}
             </TableRow>
           </TableHeader>
           <TableBody>
             {companyData.map((company, index) => (
               <TableRow key={index}>
                 <TableCell>{company.okpo}</TableCell>
-                <TableCell>{company.companyData?.generalInfo['Company Name'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.generalInfo['INN'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.generalInfo['Registration Date'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.generalInfo['Active Status'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.generalInfo['Charter Fund'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.contactInfo['Phone Numbers'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.contactInfo['SOATO Code'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.contactInfo['Address'] || 'N/A'}</TableCell>
-                <TableCell>{company.companyData?.managementInfo['Leader'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.generalInfo?.['Company Name'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.generalInfo?.['INN'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.generalInfo?.['Registration Date'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.generalInfo?.['Active Status'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.generalInfo?.['Charter Fund'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.contactInfo?.['Phone Numbers'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.contactInfo?.['SOATO Code'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.contactInfo?.['Address'] || 'N/A'}</TableCell>
+                <TableCell>{company.companyData?.managementInfo?.['Leader'] || 'N/A'}</TableCell>
+                <TableCell>
+                  {company.companyData?.shareholders?.length ? company.companyData.shareholders.join(', ') : 'N/A'}
+                </TableCell> {/* Displaying shareholders */}
               </TableRow>
             ))}
           </TableBody>

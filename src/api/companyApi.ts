@@ -17,7 +17,7 @@ export interface CompanyDataType {
   'SOATO Code': string;
   'Address': string;
   'Leader': string;
-  Founders: string;
+  Shareholders: string;
 }
 
 // Fetch company data from the backend API
@@ -26,7 +26,8 @@ export const fetchCompanyData = async (okpo: string): Promise<CompanyDataType> =
     const response = await axios.post('https://stat-express-backend.vercel.app/api/company', { okpo });
     return response.data.data;
   } catch (error: any) {
-    console.error('Error fetching company data:', error);  // Log full error
+    console.error('Error fetching company data:', error);
+
     if (error.response) {
       // The request was made, and the server responded with a status code outside the 2xx range
       console.error('Response data:', error.response.data);
@@ -39,6 +40,7 @@ export const fetchCompanyData = async (okpo: string): Promise<CompanyDataType> =
       // Something happened in setting up the request that triggered an Error
       console.error('Error message:', error.message);
     }
+
     throw new Error('An error occurred while fetching company data.');
   }
 };
