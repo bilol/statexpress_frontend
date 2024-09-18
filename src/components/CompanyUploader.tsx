@@ -144,7 +144,6 @@ const CompanyUploader: React.FC = () => {
                 {company.companyData?.shareholderInfo?.length ? (
                   company.companyData.shareholderInfo.map((shareholder, i) => (
                     <TableRow key={`${index}-${i}`}>
-                      <TableCell className="font-medium">Shareholder {i + 1}</TableCell>
                       <TableCell>{shareholder.Shareholder} ({shareholder.Share})</TableCell>
                     </TableRow>
                   ))
