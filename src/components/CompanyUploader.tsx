@@ -31,7 +31,10 @@ interface CompanyDataType {
     managementInfo?: {
       'Leader'?: string;
     };
-    shareholders?: string[]; // Array of shareholder info in the form "Name (Percentage)"
+    shareholderInfo?: {
+      Shareholder: string;
+      Share: string;
+    }[]; // Array of shareholder info in the form "Name (Percentage)"
   };
   error?: string;
 }
@@ -137,7 +140,11 @@ const CompanyUploader: React.FC = () => {
                 <TableCell>{company.companyData?.contactInfo?.['Address'] || 'N/A'}</TableCell>
                 <TableCell>{company.companyData?.managementInfo?.['Leader'] || 'N/A'}</TableCell>
                 <TableCell>
-                  {company.companyData?.shareholders?.length ? company.companyData.shareholders.join(', ') : 'N/A'}
+                  {company.companyData?.shareholderInfo?.length
+                    ? company.companyData.shareholderInfo
+                        .map((shareholder) => `${shareholder.Shareholder} (${shareholder.Share})`)
+                        .join(', ')
+                    : 'N/A'}
                 </TableCell> {/* Displaying shareholders */}
               </TableRow>
             ))}
