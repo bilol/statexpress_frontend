@@ -128,7 +128,6 @@ const CompanyUploader: React.FC = () => {
           <TableBody>
             {companyData.map((company, index) => (
               <TableRow key={index}>
-                <TableCell>{company.okpo}</TableCell>
                 <TableCell>{company.companyData?.generalInfo?.['Company Name'] || 'N/A'}</TableCell>
                 <TableCell>{company.companyData?.generalInfo?.['INN'] || 'N/A'}</TableCell>
                 <TableCell>{company.companyData?.generalInfo?.['Registration Date'] || 'N/A'}</TableCell>
