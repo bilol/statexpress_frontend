@@ -113,7 +113,6 @@ const CompanyUploader: React.FC = () => {
           <TableCaption>Results from uploaded Excel file.</TableCaption>
           <TableHeader>
             <TableRow>
-              <TableHead>OKPO</TableHead>
               <TableHead>Company Name</TableHead>
               <TableHead>INN</TableHead>
               <TableHead>Registration Date</TableHead>
