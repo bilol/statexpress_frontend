@@ -80,10 +80,21 @@ const CompanyData: React.FC<CompanyDataProps> = ({ data }) => {
             <TableCell className="font-medium">Leader</TableCell>
             <TableCell>{data.Leader || 'Not available'}</TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell className="font-medium">Shareholders</TableCell>
-            <TableCell>{data.Shareholders || 'Not available'}</TableCell>
-          </TableRow>
+          
+          {/* Displaying Shareholders row by row */}
+          {data.Shareholders && data.Shareholders.length > 0 ? (
+            data.Shareholders.split(', ').map((shareholder, index) => (
+              <TableRow key={index}>
+                <TableCell className="font-medium">Shareholder {index + 1}</TableCell>
+                <TableCell>{shareholder}</TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow>
+              <TableCell className="font-medium">Shareholders</TableCell>
+              <TableCell>Not available</TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
     </div>

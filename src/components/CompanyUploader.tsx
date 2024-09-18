@@ -139,13 +139,21 @@ const CompanyUploader: React.FC = () => {
                 <TableCell>{company.companyData?.contactInfo?.['SOATO Code'] || 'N/A'}</TableCell>
                 <TableCell>{company.companyData?.contactInfo?.['Address'] || 'N/A'}</TableCell>
                 <TableCell>{company.companyData?.managementInfo?.['Leader'] || 'N/A'}</TableCell>
-                <TableCell>
-                  {company.companyData?.shareholderInfo?.length
-                    ? company.companyData.shareholderInfo
-                        .map((shareholder) => `${shareholder.Shareholder} (${shareholder.Share})`)
-                        .join(', ')
-                    : 'N/A'}
-                </TableCell> {/* Displaying shareholders */}
+                
+                {/* Displaying Shareholders row by row */}
+                {company.companyData?.shareholderInfo?.length ? (
+                  company.companyData.shareholderInfo.map((shareholder, i) => (
+                    <TableRow key={`${index}-${i}`}>
+                      <TableCell className="font-medium">Shareholder {i + 1}</TableCell>
+                      <TableCell>{shareholder.Shareholder} ({shareholder.Share})</TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell className="font-medium">Shareholders</TableCell>
+                    <TableCell>N/A</TableCell>
+                  </TableRow>
+                )}
               </TableRow>
             ))}
           </TableBody>
